@@ -1,0 +1,159 @@
+// Variables
+$primary-color: #74c69d;
+$secondary-color: #f4f4f4;
+$font-family: "Arial, sans-serif";
+$max-width: 1200px;
+$max-width-mobile: 768px;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin responsive-card($max-width) {
+  @media (max-width: $max-width) {
+    flex-direction: column;
+    text-align: center;
+
+    .card__image-container {
+      width: 100%;
+    }
+
+    .card__image {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .card__content {
+      padding: 1rem 0;
+    }
+  }
+}
+
+// Global Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family;
+  background-color: #f4f4f4;
+  color: #001219;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// Layout Styles
+.main {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+// Header Block
+.header {
+  background-color: $primary-color;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    color: $secondary-color;
+    font-size: 1.5rem;
+  }
+
+  &__nav {
+    margin-top: 0;
+  }
+
+  &__menu {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-end;
+  }
+
+  &__item {
+    &__link {
+      color: $secondary-color;
+      &:hover {
+        color: darken($secondary-color, 15%);
+      }
+    }
+  }
+}
+
+// Card Block
+.card {
+  background-color: $secondary-color;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  padding: 1.5rem;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  width: 90%;
+  max-width: 900px;
+
+  &__image-container {
+    flex: 1;
+  }
+
+  &__image {
+    max-width: 100%;
+    border-radius: 8px;
+    height: auto;
+  }
+
+  &__content {
+    flex: 1;
+    text-align: left;
+    padding: 0 1rem;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: $primary-color;
+  }
+
+  &__description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #001219;
+  }
+
+  &__button {
+    background-color: $primary-color;
+    border: none;
+    color: $secondary-color;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+
+  @include responsive-card($max-width-mobile);
+}
+
+// Footer Block
+.footer {
+  background-color: $primary-color;
+  color: $secondary-color;
+  padding: 1rem;
+  text-align: center;
+  &__text {
+    font-size: 0.9rem;
+  }
+}
